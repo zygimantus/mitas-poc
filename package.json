@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "watch:yaml": "nodemon",
-    "build": "ts-node convert.ts && tsc && vite build",
+    "build": "tsx convert.ts && tsc && vite build",
     "start": "npm run watch:yaml & npm run dev"
   },
   "devDependencies": {
