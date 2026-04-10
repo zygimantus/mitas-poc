@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITAS POC</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: #fdfdfd;
+            color: #333;
+        }
+
+        #inv-bar {
+            background: #222;
+            color: white;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        #search-status {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .found {
+            color: #4caf50;
+        }
+
+        .not-found {
+            color: #ffeb3b;
+        }
+
+        #inv-slot {
+            margin-left: auto;
+            background: #444;
+            padding: 5px 12px;
+            border-radius: 4px;
+        }
+
+        .main-layout {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #app {
+            flex: 1;
+            padding: 60px;
+            overflow-y: auto;
+        }
+
+        #history-sidebar {
+            width: 300px;
+            background: #f4f4f4;
+            border-left: 1px solid #ddd;
+            padding: 25px;
+            overflow-y: auto;
+        }
+
+        .omega-item {
+            background: white;
+            border-left: 5px solid #4caf50;
+            margin-bottom: 15px;
+            padding: 15px;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-radius: 0 4px 4px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        #search-btn {
+            background: #eee;
+        }
+
+        #search-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .action-btn {
+            background: #222;
+            color: white;
+            font-size: 1.1rem;
+            margin: 0 10px 10px 0;
+        }
+
+        .action-btn:hover {
+            background: #444;
+            transform: translateY(-2px);
+        }
+
+        .hint {
+            color: #888;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header id="inv-bar">
+    <button id="search-btn" onclick="window.ieskotiDaikto(this)">🔍 Ieškoti daikto</button>
+    <span id="search-status">Pasiruošęs paieškai</span>
+    <span id="inv-slot">Tuščia</span>
+</header>
+
+<div class="main-layout">
+    <main id="app"></main>
+
+    <aside id="history-sidebar">
+        <h3 style="margin-top: 0; font-size: 0.9em; color: #777; letter-spacing: 1px;">🌍 PASAULIO ATMINTIS</h3>
+        <div id="history-list">
+            <p style="color: gray; font-style: italic; font-size: 0.9em;">Istorija tuščia...</p>
+        </div>
+    </aside>
+</div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+{
+  "states": {
+    "Zmogus": {
+      "label": "Žmogus",
+      "psi": "Mirtingasis",
+      "actions": [
+        {
+          "id": "KELIAUTI_I_SVENTARAGIO_SLENI",
+          "next_state": "Gediminas",
+          "label": "Keliauja į Šventaragio slėnį"
+        },
+        {
+          "id": "GAUTI_SPARNUS",
+          "next_state": "Ikaras",
+          "label": "Prisitvirtina sparnus",
+          "tool": "SPARNAI"
+        },
+        {
+          "id": "GAUTI_SKRYNIA",
+          "next_state": "Pandora",
+          "label": "Paimti skrynią",
+          "tool": "SKRYNIA"
+        },
+        {
+          "id": "KELIAUTI_I_SIRAKUZUS",
+          "next_state": "Archimedas",
+          "label": "Keliauja į Sirakūzus"
+        }
+      ]
+    },
+    "Pandora": {
+      "label": "Pandora",
+      "psi": "Smalsioji",
+      "status": "TEMPTATION",
+      "actions": [
+        {
+          "id": "MAUDYTIS",
+          "next_state": "Pasaulio_Negandos",
+          "label": "Atidaro Pandoros skrynią",
+          "tool": "SKRYNIA",
+          "boundary": "DRAUDIMAS",
+          "penalty": "CHAOSAS",
+          "omega": "VILTIS_ISSAUGOTA"
+        }
+      ]
+    },
+    "Archimedas": {
+      "label": "Archimedas",
+      "psi": "Mokslininkas",
+      "actions": [
+        {
+          "id": "MAUDYTIS",
+          "next_state": "Archimedas_Pas_Karaliu",
+          "label": "Susitinka su karaliumi"
+        }
+      ]
+    },
+    "Archimedas_Pas_Karaliu": {
+      "label": "Susitikęs su karaliumi Archimedas gauna užduotį",
+      "psi": "Mokslininkas",
+      "signal": "HERONO_UZDUOTIS",
+      "actions": [
+        {
+          "id": "MAUDYTIS",
+          "next_state": "Archimedas_Dilema",
+          "label": "Išsiaiškinti ar karūna tikra",
+          "tool": "KARUNA"
+        }
+      ]
+    },
+    "Archimedas_Dilema": {
+      "label": "Archimedas Dilemoje",
+      "psi": "Mokslininkas",
+      "status": "THINKING",
+      "actions": [
+        {
+          "id": "MAUDYTIS",
+          "next_state": "Archimedas_Eureka",
+          "label": "Eina maudytis į vonią",
+          "tool": "KARUNA",
+          "signal": "VANDENS_Lygis"
+        }
+      ]
+    },
+    "Archimedas_Eureka": {
+      "label": "Šaukiantis Eureka! Archimedas",
+      "psi": "Genijus",
+      "goal": "NUSTATYTI_GRYNUMA",
+      "actions": [
+        {
+          "id": "BEGTI_I_GATVE",
+          "next_state": "Archimedo_Desnis",
+          "label": "Bėga nuogas",
+          "omega": "ARCHIMEDO_DESNIS"
+        }
+      ]
+    },
+    "Archimedo_Desnis": {
+      "label": "Archimedo dėsnis atrastas!",
+      "terminal": true
+    },
+    "Ikaras": {
+      "label": "Ikaras",
+      "actions": [
+        {
+          "id": "SKRISTI_AUKSTAI",
+          "next_state": "Mirtis",
+          "label": "Skrenda link saulės",
+          "boundary": "SAULES_KARSTIS",
+          "omega": "PAMOKA"
+        }
+      ]
+    },
+    "Gediminas": {
+      "label": "Kunigaikštis Gediminas",
+      "actions": [
+        {
+          "id": "SAPNUOTI",
+          "next_state": "Gediminas_Sapnuoja",
+          "label": "Užmiega Šventaragio slėnyje"
+        }
+      ]
+    },
+    "Gediminas_Sapnuoja": {
+      "label": "Susapnavęs Vilką Kunigaikštis Gediminas",
+      "actions": [
+        {
+          "id": "KLAUSTI_LIZDEIKOS",
+          "next_state": "Gediminas_Zino",
+          "label": "Kreipiasi į Lizdeiką"
+        }
+      ]
+    },
+    "Gediminas_Zino": {
+      "label": "Išsiaiškinęs sapno prasmę Kunigaikštis Gediminas",
+      "actions": [
+        {
+          "id": "STATYTI",
+          "next_state": "Vilnius_Ikurtas",
+          "label": "Įkuria miestą",
+          "omega": "VILNIUS_IKURTAS"
+        }
+      ]
+    },
+    "Mirtis": {
+      "label": "Tragiška pabaiga",
+      "terminal": true
+    },
+    "Vilnius_Ikurtas": {
+      "label": "Miestas įkurtas!",
+      "terminal": true
+    },
+    "Pasaulio_Negandos": {
+      "label": "Išlaisvintos visos pasaulio blogybės!",
+      "terminal": true
+    }
+  }
+}

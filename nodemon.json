@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "src/myths.yaml",
+    "src/items.yaml"
+  ],
+  "ext": "yaml",
+  "exec": "npx tsx convert.ts"
+}
