@@ -3,7 +3,7 @@ import yaml from '@rollup/plugin-yaml';
 
 export default defineConfig({
     plugins: [yaml()],
-    base: '/',
+    base: './',
     build: {
         outDir: 'dist',
         assetsDir: 'assets',
