@@ -1,7 +1,12 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import yaml from '@rollup/plugin-yaml';
 
 export default defineConfig({
     plugins: [yaml()],
-    base: './',
+    base: '/mitas-poc/',
+    build: {
+        outDir: 'dist',
+        assetsDir: 'assets',
+        emptyOutDir: true,
+    }
 });
