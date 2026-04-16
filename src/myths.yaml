@@ -6,20 +6,24 @@ states:
       - id: "KELIAUTI_I_SVENTARAGIO_SLENI"
         next_state: "Gediminas"
         label: "Keliauja į Šventaragio slėnį"
+        completes_myth: "GEDIMINAS"
 
       - id: "GAUTI_SPARNUS"
         next_state: "Ikaras"
         label: "Prisitvirtina sparnus"
         tool: "SPARNAI"
+        completes_myth: "IKARAS"
 
       - id: "GAUTI_SKRYNIA"
         next_state: "Pandora"
         label: "Paimti skrynią"
         tool: "SKRYNIA"
+        completes_myth: "PANDORA"
 
       - id: "KELIAUTI_I_SIRAKUZUS"
         next_state: "Archimedas"
         label: "Keliauja į Sirakūzus"
+        completes_myth: "ARCHIMEDAS"
 
   Pandora:
     label: "Pandora"
@@ -33,6 +37,7 @@ states:
         boundary: "DRAUDIMAS"
         penalty: "CHAOSAS"
         omega: "VILTIS_ISSAUGOTA"
+        completes_myth: "PANDORA"
 
   Archimedas:
     label: "Archimedas"
@@ -47,7 +52,7 @@ states:
     psi: "Mokslininkas"
     signal: "HERONO_UZDUOTIS"
     actions:
-      - id: "MAUDYTIS"
+      - id: "GRIZTI_NAMO"
         next_state: "Archimedas_Dilema"
         label: "Išsiaiškinti ar karūna tikra"
         tool: "KARUNA"
@@ -57,11 +62,21 @@ states:
     psi: "Mokslininkas"
     status: "THINKING"
     actions:
-      - id: "MAUDYTIS"
+      - id: "BANDYTI_LYDYTI"
+        next_state: "Archimedas_Geda"
+        label: "Lydyti karūną (Rizika)"
+        probability: 0.3
+        penalty: "HIERONAS_ANGRY"
+        completes_myth: "ARCHIMEDAS"
+      - id: "LIPI_I_VONIA"
         next_state: "Archimedas_Eureka"
         label: "Eina maudytis į vonią"
         tool: "KARUNA"
         signal: "VANDENS_Lygis"
+
+  Archimedas_Geda:
+    label: "Gėda Archimedui ir ištremtas"
+    terminal: true
 
   Archimedas_Eureka:
     label: "Šaukiantis Eureka! Archimedas"
@@ -72,6 +87,7 @@ states:
         next_state: "Archimedo_Desnis"
         label: "Bėga nuogas"
         omega: "ARCHIMEDO_DESNIS"
+        completes_myth: "ARCHIMEDAS"
 
   Archimedo_Desnis:
     label: "Archimedo dėsnis atrastas!"
@@ -85,6 +101,7 @@ states:
         label: "Skrenda link saulės"
         boundary: "SAULES_KARSTIS"
         omega: "PAMOKA"
+        completes_myth: "IKARAS"
 
   Gediminas:
     label: "Kunigaikštis Gediminas"
@@ -107,6 +124,7 @@ states:
         next_state: "Vilnius_Ikurtas"
         label: "Įkuria miestą"
         omega: "VILNIUS_IKURTAS"
+        completes_myth: "GEDIMINAS"
 
   Mirtis:
     label: "Tragiška pabaiga"

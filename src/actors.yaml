@@ -1,0 +1,26 @@
+PLAYERS:
+  ARCHIMEDAS:
+    name: "Archimedas"
+    psi: "Mokslininkas"
+    base_status: "Neutralus"
+  GEDIMINAS:
+    name: "Gediminas"
+    psi: "Valdovas"
+  PANDORA:
+    name: "Pandora"
+    psi: "Mirtingoji"
+
+NPC:
+  HIERONAS:
+    name: "Karalius Hieronas II"
+    role: "Užduoties davėjas"
+    moods:
+      HAPPY: "Karalius džiūgauja – auksas tikras!"
+      ANGRY: "Karalius įniršęs: tu sugadinai mano karūną!"
+      DOUBTFUL: "Karalius žvelgia į tave įtariai..."
+  LIZDEIKA:
+    name: "Žynys Lizdeika"
+    role: "Sapnų aiškintojas"
+  ZEUSAS:
+    name: "Dzeusas"
+    role: "Likimo lėmėjas"

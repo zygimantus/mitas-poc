@@ -7,24 +7,28 @@
         {
           "id": "KELIAUTI_I_SVENTARAGIO_SLENI",
           "next_state": "Gediminas",
-          "label": "Keliauja į Šventaragio slėnį"
+          "label": "Keliauja į Šventaragio slėnį",
+          "completes_myth": "GEDIMINAS"
         },
         {
           "id": "GAUTI_SPARNUS",
           "next_state": "Ikaras",
           "label": "Prisitvirtina sparnus",
-          "tool": "SPARNAI"
+          "tool": "SPARNAI",
+          "completes_myth": "IKARAS"
         },
         {
           "id": "GAUTI_SKRYNIA",
           "next_state": "Pandora",
           "label": "Paimti skrynią",
-          "tool": "SKRYNIA"
+          "tool": "SKRYNIA",
+          "completes_myth": "PANDORA"
         },
         {
           "id": "KELIAUTI_I_SIRAKUZUS",
           "next_state": "Archimedas",
-          "label": "Keliauja į Sirakūzus"
+          "label": "Keliauja į Sirakūzus",
+          "completes_myth": "ARCHIMEDAS"
         }
       ]
     },
@@ -40,7 +44,8 @@
           "tool": "SKRYNIA",
           "boundary": "DRAUDIMAS",
           "penalty": "CHAOSAS",
-          "omega": "VILTIS_ISSAUGOTA"
+          "omega": "VILTIS_ISSAUGOTA",
+          "completes_myth": "PANDORA"
         }
       ]
     },
@@ -61,7 +66,7 @@
       "signal": "HERONO_UZDUOTIS",
       "actions": [
         {
-          "id": "MAUDYTIS",
+          "id": "GRIZTI_NAMO",
           "next_state": "Archimedas_Dilema",
           "label": "Išsiaiškinti ar karūna tikra",
           "tool": "KARUNA"
@@ -74,13 +79,25 @@
       "status": "THINKING",
       "actions": [
         {
-          "id": "MAUDYTIS",
+          "id": "BANDYTI_LYDYTI",
+          "next_state": "Archimedas_Geda",
+          "label": "Lydyti karūną (Rizika)",
+          "probability": 0.3,
+          "penalty": "HIERONAS_ANGRY",
+          "completes_myth": "ARCHIMEDAS"
+        },
+        {
+          "id": "LIPI_I_VONIA",
           "next_state": "Archimedas_Eureka",
           "label": "Eina maudytis į vonią",
           "tool": "KARUNA",
           "signal": "VANDENS_Lygis"
         }
       ]
+    },
+    "Archimedas_Geda": {
+      "label": "Gėda Archimedui ir ištremtas",
+      "terminal": true
     },
     "Archimedas_Eureka": {
       "label": "Šaukiantis Eureka! Archimedas",
@@ -91,7 +108,8 @@
           "id": "BEGTI_I_GATVE",
           "next_state": "Archimedo_Desnis",
           "label": "Bėga nuogas",
-          "omega": "ARCHIMEDO_DESNIS"
+          "omega": "ARCHIMEDO_DESNIS",
+          "completes_myth": "ARCHIMEDAS"
         }
       ]
     },
@@ -107,7 +125,8 @@
           "next_state": "Mirtis",
           "label": "Skrenda link saulės",
           "boundary": "SAULES_KARSTIS",
-          "omega": "PAMOKA"
+          "omega": "PAMOKA",
+          "completes_myth": "IKARAS"
         }
       ]
     },
@@ -138,7 +157,8 @@
           "id": "STATYTI",
           "next_state": "Vilnius_Ikurtas",
           "label": "Įkuria miestą",
-          "omega": "VILNIUS_IKURTAS"
+          "omega": "VILNIUS_IKURTAS",
+          "completes_myth": "GEDIMINAS"
         }
       ]
     },

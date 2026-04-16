@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MITAS POC</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
     <style>
         body {
             margin: 0;
@@ -113,6 +114,48 @@
             font-style: italic;
             margin-top: 20px;
         }
+
+        .npc-container {
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .npc-name {
+            font-size: 0.85em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .status-track {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .status-bar {
+            height: 100%;
+            width: 50%;
+            background: #4caf50;
+            transition: width 0.5s ease, background 0.3s ease;
+        }
+
+        .bar-angry {
+            background: #f44336;
+        }
+
+        .bar-neutral {
+            background: #ff9800;
+        }
+
+        .bar-happy {
+            background: #4caf50;
+        }
     </style>
 </head>
 <body>
@@ -130,6 +173,11 @@
         <h3 style="margin-top: 0; font-size: 0.9em; color: #777; letter-spacing: 1px;">🌍 PASAULIO ATMINTIS</h3>
         <div id="history-list">
             <p style="color: gray; font-style: italic; font-size: 0.9em;">Istorija tuščia...</p>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+
+        <h3 style="font-size: 0.9em; color: #777; letter-spacing: 1px;">👥 VEIKĖJŲ PALANKUMAS</h3>
+        <div id="npc-list">
         </div>
     </aside>
 </div>

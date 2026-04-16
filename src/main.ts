@@ -1,69 +1,19 @@
-import {myths} from './types';
-import {updateInventoryUI, tryFindItem} from './inventory';
-import {renderMyth} from './renderer';
+import { HistoryManager } from './core/HistoryManager';
+import { NPCManager } from './core/NPCManager';
+import { InventoryManager } from './core/InventoryManager';
+import { GameState } from './core/GameState';
+import { ActionEngine } from './logic/ActionEngine';
 
-let currentStateId = 'Zmogus';
-const worldHistory: string[] = JSON.parse(localStorage.getItem('worldHistory') || '[]');
+const history = new HistoryManager();
+const npcs = new NPCManager();
+const inventory = new InventoryManager();
 
-const updateHistoryUI = () => {
-    const historyList = document.getElementById('history-list');
-    if (!historyList) return;
+const state = new GameState(history, npcs, inventory);
 
-    if (worldHistory.length === 0) {
-        historyList.innerHTML = `<p style="color: gray; font-style: italic; font-size: 0.9em;">Istorija tuščia...</p>`;
-        return;
-    }
+const engine = new ActionEngine(state);
 
-    historyList.innerHTML = worldHistory
-        .map(omega => `<div class="omega-item"><b>Ω</b> ${omega.replace(/_/g, ' ')}</div>`)
-        .reverse()
-        .join('');
-};
+(window as any).performAction = (a: string, n: string) => engine.perform(a, n);
+(window as any).ieskotiDaikto = (el: HTMLButtonElement) => engine.search(el);
+(window as any).isvalytiAtminti = () => state.resetGame();
 
-const saveHistory = () => {
-    localStorage.setItem('worldHistory', JSON.stringify(worldHistory));
-};
-
-(window as any).ieskotiDaikto = (buttonEl: HTMLButtonElement) => {
-    const result = tryFindItem();
-
-    if (result.success) {
-        updateInventoryUI({msg: `SĖKMĖ: Radote ${result.item?.label}!`, type: 'success'});
-    } else {
-        updateInventoryUI({msg: "TUŠČIA: Nieko nerasta.", type: 'fail'});
-    }
-    renderMyth(currentStateId, worldHistory);
-};
-
-(window as any).performAction = (actionId: string, nextStateId: string) => {
-    const currentState = myths.states[currentStateId];
-    const action = currentState?.actions?.find(a => a.id === actionId);
-
-    if (action?.omega && !worldHistory.includes(action.omega)) {
-        worldHistory.push(action.omega);
-        saveHistory();
-        updateHistoryUI();
-    }
-
-    currentStateId = nextStateId;
-
-    const searchBtn = document.getElementById('search-btn') as HTMLButtonElement;
-    if (searchBtn) {
-        searchBtn.disabled = false;
-        searchBtn.innerText = "🔍 Ieškoti daikto";
-    }
-
-    updateInventoryUI({ msg: "Pasiruošęs paieškai", type: 'reset' });
-    renderMyth(currentStateId, worldHistory);
-};
-
-(window as any).isvalytiAtminti = () => {
-    if (confirm("Ar tikrai norite ištrinti visą pasaulio atmintį?")) {
-        localStorage.removeItem('worldHistory');
-        location.reload();
-    }
-};
-
-updateHistoryUI();
-updateInventoryUI();
-renderMyth(currentStateId, worldHistory);
+engine.refresh();

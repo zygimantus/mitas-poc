@@ -7,10 +7,18 @@ export interface MythAction {
     label: string;
     tool?: string;
     omega?: string;
+    impact?: {
+        npc: string;
+        value: number;
+    };
+    completes_myth?: string;
+    probability?: number;
 }
 
 export interface MythState {
     label: string;
+    psi?: string;
+    status?: string;
     actions?: MythAction[];
     terminal?: boolean;
 }
